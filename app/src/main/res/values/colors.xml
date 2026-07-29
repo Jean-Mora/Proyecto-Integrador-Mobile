@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="puce_blue">#1B4B91</color>
+    <color name="puce_blue_dark">#0F2E5C</color>
+    <color name="puce_gold">#C9A227</color>
+
+    <color name="background_light">#F5F6FA</color>
+    <color name="background_dark">#121317</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_dark">#1E1F24</color>
+    <color name="on_surface_light">#1A1C1E</color>
+    <color name="on_surface_dark">#E3E2E6</color>
+    <color name="outline">#C4C6CF</color>
+
+    <color name="estado_disponible">#2E7D32</color>
+    <color name="estado_prestado">#B26A00</color>
+    <color name="estado_mantenimiento">#8E8E93</color>
+
+    <color name="estado_pendiente">#B26A00</color>
+    <color name="estado_aprobado">#2E7D32</color>
+    <color name="estado_rechazado">#C62828</color>
+    <color name="estado_devuelto">#455A64</color>
+
+    <color name="error">#C62828</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
