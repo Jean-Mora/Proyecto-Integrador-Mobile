@@ -1,104 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- HU-18: por ahora el unico destino es Login. Catalogo (HU-19) sera el startDestination
+     final una vez que exista esa pantalla. -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/catalogoFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.puce.sigpel.ui.auth.LoginFragment"
         android:label="@string/login_title"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_login_to_catalogo"
-            app:destination="@id/catalogoFragment"
-            app:popUpTo="@id/catalogoFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/catalogoFragment"
-        android:name="com.puce.sigpel.ui.catalogo.CatalogoFragment"
-        android:label="@string/catalogo_title"
-        tools:layout="@layout/fragment_catalogo">
-        <action
-            android:id="@+id/action_catalogo_to_login"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_catalogo_to_detalleEquipo"
-            app:destination="@id/detalleEquipoFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/detalleEquipoFragment"
-        android:name="com.puce.sigpel.ui.catalogo.DetalleEquipoFragment"
-        android:label="@string/detalle_equipo_solicitar"
-        tools:layout="@layout/fragment_detalle_equipo">
-        <argument android:name="equipoId" app:argType="long" />
-        <action
-            android:id="@+id/action_detalleEquipo_to_solicitarPrestamo"
-            app:destination="@id/solicitarPrestamoFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/solicitarPrestamoFragment"
-        android:name="com.puce.sigpel.ui.prestamos.SolicitarPrestamoFragment"
-        android:label="@string/solicitar_prestamo_title"
-        tools:layout="@layout/fragment_solicitar_prestamo">
-        <argument android:name="equipoId" app:argType="long" />
-        <argument android:name="equipoNombre" app:argType="string" />
-        <action
-            android:id="@+id/action_solicitarPrestamo_to_misPrestamos"
-            app:destination="@id/misPrestamosFragment"
-            app:popUpTo="@id/catalogoFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/misPrestamosFragment"
-        android:name="com.puce.sigpel.ui.prestamos.MisPrestamosFragment"
-        android:label="@string/mis_prestamos_title"
-        tools:layout="@layout/fragment_mis_prestamos">
-        <action
-            android:id="@+id/action_misPrestamos_to_detallePrestamo"
-            app:destination="@id/detallePrestamoFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/detallePrestamoFragment"
-        android:name="com.puce.sigpel.ui.prestamos.DetallePrestamoFragment"
-        android:label="@string/detalle_prestamo_title"
-        tools:layout="@layout/fragment_detalle_prestamo">
-        <argument android:name="prestamoId" app:argType="long" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/gestionEquiposFragment"
-        android:name="com.puce.sigpel.ui.encargado.GestionEquiposFragment"
-        android:label="@string/gestion_equipos_title"
-        tools:layout="@layout/fragment_gestion_equipos">
-        <action
-            android:id="@+id/action_gestionEquipos_to_gestionCategorias"
-            app:destination="@id/gestionCategoriasFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/gestionCategoriasFragment"
-        android:name="com.puce.sigpel.ui.encargado.GestionCategoriasFragment"
-        android:label="@string/gestion_categorias_title"
-        tools:layout="@layout/fragment_gestion_categorias" />
-
-    <fragment
-        android:id="@+id/solicitudesPendientesFragment"
-        android:name="com.puce.sigpel.ui.encargado.SolicitudesPendientesFragment"
-        android:label="@string/solicitudes_title"
-        tools:layout="@layout/fragment_solicitudes_pendientes" />
-
-    <fragment
-        android:id="@+id/nuevaIncidenciaFragment"
-        android:name="com.puce.sigpel.ui.encargado.NuevaIncidenciaFragment"
-        android:label="@string/incidencia_title"
-        tools:layout="@layout/fragment_nueva_incidencia" />
+        tools:layout="@layout/fragment_login" />
 
 </navigation>

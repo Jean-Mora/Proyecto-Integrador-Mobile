@@ -24,4 +24,6 @@
     <color name="error">#C62828</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+
+    <color name="ripple_puce_blue">#331B4B91</color>
 </resources>

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.puce.sigpel.R
 import com.puce.sigpel.databinding.FragmentLoginBinding
 import com.puce.sigpel.ui.common.gone
@@ -14,10 +13,12 @@ import com.puce.sigpel.ui.common.setVisible
 import com.puce.sigpel.ui.common.sigpelApp
 import com.puce.sigpel.ui.common.simpleViewModelFactory
 import com.puce.sigpel.ui.common.textOrNull
+import com.puce.sigpel.ui.common.toast
 import com.puce.sigpel.ui.common.visible
 import com.puce.sigpel.util.UiState
 
-/** Pantalla 3.2 del md: login contra Cognito. VISITANTE puede omitirla y volver al catalogo. */
+/** Pantalla 3.2 del md: login contra Cognito (HU-18). El destino post-login (catálogo) y el
+ * botón de "continuar como visitante" se conectan en HU-19, cuando esa pantalla exista. */
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
@@ -45,9 +46,7 @@ class LoginFragment : Fragment() {
             viewModel.login(username, password)
         }
 
-        binding.buttonVisitante.setOnClickListener {
-            findNavController().popBackStack()
-        }
+        binding.buttonVisitante.gone()
 
         viewModel.loginState.observe(viewLifecycleOwner) { state ->
             when (state) {
@@ -59,7 +58,7 @@ class LoginFragment : Fragment() {
                 is UiState.Success -> {
                     binding.progressLogin.gone()
                     binding.buttonLogin.isEnabled = true
-                    findNavController().navigate(R.id.action_login_to_catalogo)
+                    toast(getString(R.string.action_login) + ": " + state.data.name)
                 }
                 is UiState.Error -> {
                     binding.progressLogin.gone()

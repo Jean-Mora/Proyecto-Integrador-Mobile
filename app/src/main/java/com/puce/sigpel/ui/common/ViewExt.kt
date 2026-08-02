@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.puce.sigpel.R
 import com.puce.sigpel.SigpelApp
 
 fun View.visible() { visibility = View.VISIBLE }
@@ -19,6 +21,11 @@ fun Fragment.toast(message: String) {
 }
 
 fun EditText.textOrNull(): String? = text?.toString()?.trim()?.takeIf { it.isNotEmpty() }
+
+/** Spinner de refresco con los colores de marca PUCE en vez del verde por defecto de Material. */
+fun SwipeRefreshLayout.applyBrandColors() {
+    setColorSchemeResources(R.color.puce_blue, R.color.puce_gold)
+}
 
 val Fragment.sigpelApp: SigpelApp get() = requireActivity().application as SigpelApp
 
