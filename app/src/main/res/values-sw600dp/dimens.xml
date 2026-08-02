@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tablets de 7"+ (ancho minimo 600dp): mas aire y tipografia mayor. -->
+    <dimen name="screen_margin">32dp</dimen>
+    <dimen name="content_max_width">720dp</dimen>
+    <dimen name="card_spacing">16dp</dimen>
+    <dimen name="section_spacing">32dp</dimen>
+
+    <dimen name="text_title">28sp</dimen>
+    <dimen name="text_subtitle">18sp</dimen>
+    <dimen name="text_body">16sp</dimen>
+
+    <dimen name="detalle_image_size">180dp</dimen>
+    <dimen name="fab_margin">24dp</dimen>
+</resources>

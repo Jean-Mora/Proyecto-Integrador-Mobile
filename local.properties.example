@@ -1,0 +1,11 @@
+# Copia este archivo como "local.properties" (ignorado por git) y completa las rutas/valores reales.
+
+sdk.dir=/ruta/a/tu/Android/sdk
+
+# Backend SIGPEL (ver Backend/src/main/resources/application.yml)
+API_BASE_URL=http://10.0.2.2:8080/
+
+# Cognito User Pool (mismo pool que usa el backend como issuer-uri)
+COGNITO_REGION=us-east-1
+COGNITO_USER_POOL_ID=us-east-1_XXXXXXXXX
+COGNITO_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxx
