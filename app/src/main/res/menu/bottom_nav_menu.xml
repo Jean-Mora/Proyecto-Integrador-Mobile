@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solo Catalogo por ahora; el resto de pestañas se agregan en HU-20/HU-21. -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/catalogoFragment"
+        android:icon="@drawable/ic_catalogo"
+        android:title="@string/nav_catalogo" />
+</menu>

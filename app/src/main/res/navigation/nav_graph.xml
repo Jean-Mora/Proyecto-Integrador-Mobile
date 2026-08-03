@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- HU-18: por ahora el unico destino es Login. Catalogo (HU-19) sera el startDestination
-     final una vez que exista esa pantalla. -->
+<!-- HU-19: Catalogo ya es publico y pasa a ser el startDestination; Login queda
+     como pantalla secundaria alcanzable desde la barra superior. -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/catalogoFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.puce.sigpel.ui.auth.LoginFragment"
         android:label="@string/login_title"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_catalogo"
+            app:destination="@id/catalogoFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/catalogoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/catalogoFragment"
+        android:name="com.puce.sigpel.ui.catalogo.CatalogoFragment"
+        android:label="@string/catalogo_title"
+        tools:layout="@layout/fragment_catalogo">
+        <action
+            android:id="@+id/action_catalogo_to_login"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out" />
+    </fragment>
 
 </navigation>

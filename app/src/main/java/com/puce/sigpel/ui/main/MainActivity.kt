@@ -10,27 +10,37 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.navigation.NavigationBarView
 import com.puce.sigpel.R
 import com.puce.sigpel.SigpelApp
 
 /**
- * Shell de la app (HU-18). Por ahora solo aloja el NavHost con Login; la barra de
- * navegacion inferior llega en HU-19 cuando exista mas de un destino de nivel superior.
+ * Shell de la app (HU-19). El layout es responsive: activity_main.xml usa
+ * BottomNavigationView en telefonos y layout-sw600dp/activity_main.xml usa
+ * NavigationRailView en tablets; ambos comparten el id nav_view y el menu
+ * bottom_nav_menu.xml.
  */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toolbar: MaterialToolbar
+    private lateinit var navBarView: NavigationBarView
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
     private val app get() = application as SigpelApp
+
+    private val topLevelDestinations = setOf(
+        R.id.catalogoFragment
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         toolbar = findViewById(R.id.toolbar)
+        navBarView = findViewById(R.id.nav_view)
 
         // No usar findNavController(viewId) aqui: en onCreate() el NavHostFragment ya
         // esta agregado pero su vista todavia no se crea (llega a onCreateView recien en
@@ -39,10 +49,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.loginFragment))
+        appBarConfiguration = AppBarConfiguration(topLevelDestinations)
 
         setSupportActionBar(toolbar)
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+        navBarView.setupWithNavController(navController)
     }
 
     // setSupportActionBar() delega el menu del toolbar al ciclo de vida de la ActionBar:
@@ -80,9 +91,14 @@ class MainActivity : AppCompatActivity() {
                 .setPositiveButton(R.string.si) { _, _ ->
                     app.authRepository.logout()
                     invalidateOptionsMenu()
+                    if (navController.currentDestination?.id !in topLevelDestinations) {
+                        navController.navigate(R.id.catalogoFragment)
+                    }
                 }
                 .setNegativeButton(R.string.no, null)
                 .show()
+        } else if (navController.currentDestination?.id != R.id.loginFragment) {
+            navController.navigate(R.id.loginFragment)
         }
     }
 }
