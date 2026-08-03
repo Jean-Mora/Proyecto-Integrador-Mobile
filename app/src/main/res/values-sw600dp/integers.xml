@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tablets 7"-9": mas columnas visibles por fila. -->
+    <integer name="grid_columns_catalogo">3</integer>
+    <integer name="grid_columns_admin">2</integer>
+</resources>
