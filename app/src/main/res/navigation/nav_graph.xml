@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- HU-19: Catalogo ya es publico y pasa a ser el startDestination; Login queda
-     como pantalla secundaria alcanzable desde la barra superior. -->
+<!-- HU-20: se agregan Detalle de equipo y Solicitar prestamo, encadenados desde el catalogo. -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,6 +30,37 @@
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_catalogo_to_detalleEquipo"
+            app:destination="@id/detalleEquipoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalleEquipoFragment"
+        android:name="com.puce.sigpel.ui.catalogo.DetalleEquipoFragment"
+        android:label="@string/detalle_equipo_solicitar"
+        tools:layout="@layout/fragment_detalle_equipo">
+        <argument android:name="equipoId" app:argType="long" />
+        <action
+            android:id="@+id/action_detalleEquipo_to_solicitarPrestamo"
+            app:destination="@id/solicitarPrestamoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/solicitarPrestamoFragment"
+        android:name="com.puce.sigpel.ui.prestamos.SolicitarPrestamoFragment"
+        android:label="@string/solicitar_prestamo_title"
+        tools:layout="@layout/fragment_solicitar_prestamo">
+        <argument android:name="equipoId" app:argType="long" />
+        <argument android:name="equipoNombre" app:argType="string" />
     </fragment>
 
 </navigation>

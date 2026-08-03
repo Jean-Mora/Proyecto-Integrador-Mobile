@@ -6,8 +6,10 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.chip.Chip
 import com.puce.sigpel.R
@@ -39,8 +41,12 @@ class CatalogoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // El detalle de equipo (HU-20) todavia no existe: por ahora el tap no navega.
-        adapter = EquipoAdapter { }
+        adapter = EquipoAdapter { equipo ->
+            findNavController().navigate(
+                R.id.action_catalogo_to_detalleEquipo,
+                bundleOf("equipoId" to equipo.id)
+            )
+        }
         val spanCount = resources.getInteger(R.integer.grid_columns_catalogo)
         binding.recyclerEquipos.layoutManager = GridLayoutManager(requireContext(), spanCount)
         binding.recyclerEquipos.adapter = adapter
