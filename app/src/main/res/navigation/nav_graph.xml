@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- HU-20: se agregan Detalle de equipo y Solicitar prestamo, encadenados desde el catalogo. -->
+<!-- HU-21: se agrega el panel de aprobaciones del ENCARGADO (solicitudesPendientesFragment). -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -62,5 +62,11 @@
         <argument android:name="equipoId" app:argType="long" />
         <argument android:name="equipoNombre" app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/solicitudesPendientesFragment"
+        android:name="com.puce.sigpel.ui.encargado.SolicitudesPendientesFragment"
+        android:label="@string/solicitudes_title"
+        tools:layout="@layout/fragment_solicitudes_pendientes" />
 
 </navigation>

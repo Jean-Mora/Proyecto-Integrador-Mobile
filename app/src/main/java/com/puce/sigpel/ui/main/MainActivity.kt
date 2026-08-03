@@ -15,9 +15,10 @@ import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationBarView
 import com.puce.sigpel.R
 import com.puce.sigpel.SigpelApp
+import com.puce.sigpel.data.auth.Role
 
 /**
- * Shell de la app (HU-19). El layout es responsive: activity_main.xml usa
+ * Shell de la app. El layout es responsive: activity_main.xml usa
  * BottomNavigationView en telefonos y layout-sw600dp/activity_main.xml usa
  * NavigationRailView en tablets; ambos comparten el id nav_view y el menu
  * bottom_nav_menu.xml.
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
     private val app get() = application as SigpelApp
 
     private val topLevelDestinations = setOf(
-        R.id.catalogoFragment
+        R.id.catalogoFragment,
+        R.id.solicitudesPendientesFragment
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +56,14 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         navBarView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, _, _ -> refreshRoleUi() }
+        refreshRoleUi()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshRoleUi()
     }
 
     // setSupportActionBar() delega el menu del toolbar al ciclo de vida de la ActionBar:
@@ -90,7 +100,7 @@ class MainActivity : AppCompatActivity() {
                 .setMessage(R.string.action_logout_confirm_msg)
                 .setPositiveButton(R.string.si) { _, _ ->
                     app.authRepository.logout()
-                    invalidateOptionsMenu()
+                    refreshRoleUi()
                     if (navController.currentDestination?.id !in topLevelDestinations) {
                         navController.navigate(R.id.catalogoFragment)
                     }
@@ -100,5 +110,12 @@ class MainActivity : AppCompatActivity() {
         } else if (navController.currentDestination?.id != R.id.loginFragment) {
             navController.navigate(R.id.loginFragment)
         }
+    }
+
+    private fun refreshRoleUi() {
+        val role = app.authRepository.currentRole
+        navBarView.menu.findItem(R.id.solicitudesPendientesFragment)?.isVisible = role == Role.ENCARGADO
+
+        invalidateOptionsMenu()
     }
 }
