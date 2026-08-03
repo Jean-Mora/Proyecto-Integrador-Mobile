@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/catalogoFragment"
+        android:icon="@drawable/ic_catalogo"
+        android:title="@string/nav_catalogo" />
+    <item
+        android:id="@+id/solicitudesPendientesFragment"
+        android:icon="@drawable/ic_solicitudes"
+        android:title="@string/nav_solicitudes" />
+</menu>
