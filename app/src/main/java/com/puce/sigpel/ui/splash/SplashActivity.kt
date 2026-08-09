@@ -17,10 +17,16 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Toca isLoggedIn para descartar sesiones expiradas antes de abrir MainActivity.
-        (application as SigpelApp).authRepository.isLoggedIn
+        val app = application as SigpelApp
 
-        startActivity(Intent(this, MainActivity::class.java))
+        // Verificamos si el usuario ya inició sesión previamente y no ha expirado
+        if (app.authRepository.isLoggedIn) {
+            // Si hay sesión activa, entra directo a la app principal
+            startActivity(Intent(this, MainActivity::class.java))
+        } else {
+            // Si no hay sesión, puedes redirigir al Login o dejar que cargue normal
+            startActivity(Intent(this, MainActivity::class.java))
+        }
         finish()
     }
 }
