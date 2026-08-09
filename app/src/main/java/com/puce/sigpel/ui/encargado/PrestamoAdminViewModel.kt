@@ -37,4 +37,16 @@ class PrestamoAdminViewModel(private val prestamoRepository: PrestamoRepository)
                 .onFailure { _actionState.value = UiState.Error(it.toUserMessage()) }
         }
     }
+
+    // Dentro de PrestamoAdminViewModel.kt
+    fun registrarEquipo(nombre: String, serial: String) {
+        viewModelScope.launch {
+            try {
+                // repository.postEquipo(EquipoDto(nombre, serial))
+                // Aquí manejarías el éxito, por ejemplo, mostrando un Toast o navegando atrás
+            } catch (e: Exception) {
+                // Manejo de error
+            }
+        }
+    }
 }
