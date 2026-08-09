@@ -122,3 +122,4 @@ class CatalogoFragment : Fragment() {
         _binding = null
     }
 }
+

@@ -37,3 +37,4 @@ class EquipoAdapter(private val onClick: (EquipoResponse) -> Unit) :
         }
     }
 }
+

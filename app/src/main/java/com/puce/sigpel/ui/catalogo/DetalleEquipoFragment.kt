@@ -85,3 +85,4 @@ class DetalleEquipoFragment : Fragment() {
         _binding = null
     }
 }
+

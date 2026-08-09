@@ -28,10 +28,10 @@ android {
 
         // Backend SIGPEL (ver docs/sigpel_pantallas_moviles.md) y Cognito User Pool.
         // Se resuelven desde local.properties (ver local.properties.example); nunca se commitean valores reales.
-        buildConfigField("String", "API_BASE_URL", "\"${localOrDefault("API_BASE_URL", "http://10.0.2.2:8080/")}\"")
+        buildConfigField("String", "API_BASE_URL", "\"${localOrDefault("API_BASE_URL", "http://54.211.44.223:8080/")}\"")
         buildConfigField("String", "COGNITO_REGION", "\"${localOrDefault("COGNITO_REGION", "us-east-1")}\"")
-        buildConfigField("String", "COGNITO_USER_POOL_ID", "\"${localOrDefault("COGNITO_USER_POOL_ID", "")}\"")
-        buildConfigField("String", "COGNITO_CLIENT_ID", "\"${localOrDefault("COGNITO_CLIENT_ID", "")}\"")
+        buildConfigField("String", "COGNITO_USER_POOL_ID", "\"${localOrDefault("COGNITO_USER_POOL_ID", "us-east-1_fHc4wA2cF")}\"")
+        buildConfigField("String", "COGNITO_CLIENT_ID", "\"${localOrDefault("COGNITO_CLIENT_ID", "3ans0himg191rg5prihuet9eg0")}\"")
     }
 
     buildTypes {

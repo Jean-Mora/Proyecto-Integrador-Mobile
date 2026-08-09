@@ -61,3 +61,4 @@ class CatalogoViewModel(
         _equiposState.value = UiState.Success(filtered)
     }
 }
+
