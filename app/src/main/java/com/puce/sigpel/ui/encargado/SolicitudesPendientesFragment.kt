@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.puce.sigpel.R
 import com.puce.sigpel.data.remote.dto.EstadoPrestamo
 import com.puce.sigpel.data.remote.dto.PrestamoResponse
+import com.puce.sigpel.data.remote.dto.TipoIncidencia
 import com.puce.sigpel.databinding.DialogComentarioBinding
 import com.puce.sigpel.databinding.FragmentSolicitudesPendientesBinding
 import com.puce.sigpel.ui.common.applyBrandColors
@@ -28,7 +29,12 @@ class SolicitudesPendientesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: PrestamoAdminViewModel by viewModels {
-        simpleViewModelFactory { PrestamoAdminViewModel(sigpelApp.prestamoRepository) }
+        simpleViewModelFactory {
+            PrestamoAdminViewModel(
+                sigpelApp.prestamoRepository,
+                sigpelApp.incidenciaRepository
+            )
+        }
     }
 
     private lateinit var adapter: SolicitudAdapter
@@ -44,7 +50,8 @@ class SolicitudesPendientesFragment : Fragment() {
         adapter = SolicitudAdapter(
             onAprobar = { prestamo -> viewModel.cambiarEstado(prestamo.id, EstadoPrestamo.APROBADO, null) },
             onRechazar = { prestamo -> showRechazarDialog(prestamo) },
-            onDevuelto = { prestamo -> viewModel.cambiarEstado(prestamo.id, EstadoPrestamo.DEVUELTO, null) }
+            onDevuelto = { prestamo -> viewModel.cambiarEstado(prestamo.id, EstadoPrestamo.DEVUELTO, null) },
+            onIncidencia = { prestamo -> showRegistrarIncidenciaDialog(prestamo) }
         )
         binding.recyclerSolicitudes.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerSolicitudes.adapter = adapter
@@ -93,6 +100,20 @@ class SolicitudesPendientesFragment : Fragment() {
             .setNegativeButton(R.string.form_cancelar, null)
             .show()
     }
+
+    private fun showRegistrarIncidenciaDialog(prestamo: PrestamoResponse) {
+        val dialogBinding = DialogComentarioBinding.inflate(layoutInflater)
+        AlertDialog.Builder(requireContext())
+            .setTitle("Registrar Incidencia")
+            .setView(dialogBinding.root)
+            .setPositiveButton("Registrar") { _, _ ->
+                val descripcion = dialogBinding.inputComentario.textOrNull()
+                viewModel.registrarIncidencia(prestamo.id, TipoIncidencia.DANIO, descripcion)
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

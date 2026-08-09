@@ -16,7 +16,8 @@ import com.puce.sigpel.util.DateFormat
 class SolicitudAdapter(
     private val onAprobar: (PrestamoResponse) -> Unit,
     private val onRechazar: (PrestamoResponse) -> Unit,
-    private val onDevuelto: (PrestamoResponse) -> Unit
+    private val onDevuelto: (PrestamoResponse) -> Unit,
+    private val onIncidencia: (PrestamoResponse) -> Unit
 ) : ListAdapter<PrestamoResponse, SolicitudAdapter.ViewHolder>(DIFF) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,6 +45,11 @@ class SolicitudAdapter(
             binding.buttonAprobar.setOnClickListener { onAprobar(prestamo) }
             binding.buttonRechazar.setOnClickListener { onRechazar(prestamo) }
             binding.buttonDevuelto.setOnClickListener { onDevuelto(prestamo) }
+
+            // En la función bind:
+            binding.buttonIncidencia.setVisible(prestamo.estado == EstadoPrestamo.DEVUELTO)
+            binding.buttonIncidencia.setOnClickListener { onIncidencia(prestamo) }
+
         }
     }
 

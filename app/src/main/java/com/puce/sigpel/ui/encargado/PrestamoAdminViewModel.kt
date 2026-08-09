@@ -6,13 +6,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.puce.sigpel.data.remote.dto.EstadoPrestamo
 import com.puce.sigpel.data.remote.dto.PrestamoResponse
+import com.puce.sigpel.data.remote.dto.TipoIncidencia
+import com.puce.sigpel.data.repository.IncidenciaRepository
 import com.puce.sigpel.data.repository.PrestamoRepository
 import com.puce.sigpel.util.UiState
 import com.puce.sigpel.util.toUserMessage
 import kotlinx.coroutines.launch
 
 /** Pantalla 3.8 del md, rol ENCARGADO. Usa GET /prestamos (bandeja completa, ver nota en ApiService). */
-class PrestamoAdminViewModel(private val prestamoRepository: PrestamoRepository) : ViewModel() {
+class PrestamoAdminViewModel(
+    private val prestamoRepository: PrestamoRepository,
+    private val incidenciaRepository: IncidenciaRepository
+) : ViewModel() {
 
     private val _state = MutableLiveData<UiState<List<PrestamoResponse>>>()
     val state: LiveData<UiState<List<PrestamoResponse>>> = _state
@@ -38,7 +43,6 @@ class PrestamoAdminViewModel(private val prestamoRepository: PrestamoRepository)
         }
     }
 
-    // Dentro de PrestamoAdminViewModel.kt
     fun registrarEquipo(nombre: String, serial: String) {
         viewModelScope.launch {
             try {
@@ -60,6 +64,20 @@ class PrestamoAdminViewModel(private val prestamoRepository: PrestamoRepository)
             } catch (e: Exception) {
                 _actionState.value = UiState.Error(e.toUserMessage())
             }
+        }
+    }
+
+    fun registrarIncidencia(prestamoId: Long, tipo: TipoIncidencia, descripcion: String?) {
+        _actionState.value = UiState.Loading
+        viewModelScope.launch {
+            incidenciaRepository.registrar(prestamoId, tipo, descripcion)
+                .onSuccess {
+                    _actionState.value = UiState.Success(Unit)
+                    load()
+                }
+                .onFailure {
+                    _actionState.value = UiState.Error(it.message ?: "Error al registrar")
+                }
         }
     }
 }
