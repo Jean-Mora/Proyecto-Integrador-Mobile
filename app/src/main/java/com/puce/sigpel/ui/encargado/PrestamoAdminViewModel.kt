@@ -49,4 +49,17 @@ class PrestamoAdminViewModel(private val prestamoRepository: PrestamoRepository)
             }
         }
     }
+
+    fun marcarComoDevuelto(prestamoId: Long) {
+        _actionState.value = UiState.Loading
+        viewModelScope.launch {
+            try {
+                // prestamoRepository.marcarDevuelto(prestamoId)
+                _actionState.value = UiState.Success(Unit)
+                load() // Recarga la lista para reflejar el cambio
+            } catch (e: Exception) {
+                _actionState.value = UiState.Error(e.toUserMessage())
+            }
+        }
+    }
 }

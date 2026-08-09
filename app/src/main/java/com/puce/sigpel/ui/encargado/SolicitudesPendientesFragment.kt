@@ -98,4 +98,7 @@ class SolicitudesPendientesFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
+
 }
