@@ -11,12 +11,21 @@
     <color name="on_surface_light">#1A1C1E</color>
     <color name="on_surface_dark">#E3E2E6</color>
     <color name="outline">#C4C6CF</color>
+    <!-- Uso exclusivo en texto (nombres secundarios, fechas, estados vacios): #C4C6CF sobre
+         fondo claro da ~1.7:1 de contraste, por debajo del minimo WCAG AA de 4.5:1 para texto.
+         Este gris da ~6:1. "outline" se deja intacto para bordes/strokes decorativos, donde
+         el requisito de contraste es mucho mas laxo (3:1 solo para limites de componentes UI). -->
+    <color name="text_secondary">#5F6368</color>
 
+    <!-- estado_prestado/estado_pendiente y estado_mantenimiento se oscurecieron frente a su
+         version original (#B26A00 -> 4.24:1, #8E8E93 -> 3.26:1) porque llevan texto blanco
+         encima (Widget.Sigpel.EstadoBadge, 12sp bold) y no llegaban al minimo WCAG AA de 4.5:1
+         para texto pequeño. -->
     <color name="estado_disponible">#2E7D32</color>
-    <color name="estado_prestado">#B26A00</color>
-    <color name="estado_mantenimiento">#8E8E93</color>
+    <color name="estado_prestado">#A05F00</color>
+    <color name="estado_mantenimiento">#717175</color>
 
-    <color name="estado_pendiente">#B26A00</color>
+    <color name="estado_pendiente">#A05F00</color>
     <color name="estado_aprobado">#2E7D32</color>
     <color name="estado_rechazado">#C62828</color>
     <color name="estado_devuelto">#455A64</color>

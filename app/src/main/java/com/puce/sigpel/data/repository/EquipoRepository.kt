@@ -5,6 +5,7 @@ import com.puce.sigpel.data.remote.dto.EquipoEstadoRequest
 import com.puce.sigpel.data.remote.dto.EquipoRequest
 import com.puce.sigpel.data.remote.dto.EquipoResponse
 import com.puce.sigpel.data.remote.dto.EstadoEquipo
+import okhttp3.MultipartBody
 
 /** Pantallas 3.1, 3.3 (catalogo publico) y 3.7 (gestion, rol ENCARGADO). */
 class EquipoRepository(private val apiService: ApiService) {
@@ -28,5 +29,9 @@ class EquipoRepository(private val apiService: ApiService) {
     suspend fun eliminar(id: Long): Result<Unit> = runCatching {
         apiService.eliminarEquipo(id)
         Unit
+    }
+
+    suspend fun subirImagen(id: Long, file: MultipartBody.Part): Result<EquipoResponse> = runCatching {
+        apiService.subirImagenEquipo(id, file)
     }
 }

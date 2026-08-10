@@ -1,11 +1,13 @@
 package com.puce.sigpel.data.remote.dto
 
-/** Espejo de com.puce.sigpel.dto.CategoriaEquipoDtos en el backend. */
+import com.google.gson.annotations.SerializedName
+
+/** Espejo de com.puce.sigpel.dto.EquipmentCategoryDtos en el backend (@RequestMapping("/categories")). */
 data class CategoriaEquipoRequest(
-    val nombre: String
+    @SerializedName("name") val nombre: String
 )
 
 data class CategoriaEquipoResponse(
     val id: Long,
-    val nombre: String
+    @SerializedName("name") val nombre: String
 )

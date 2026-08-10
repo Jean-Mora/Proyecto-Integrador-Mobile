@@ -43,30 +43,6 @@ class PrestamoAdminViewModel(
         }
     }
 
-    fun registrarEquipo(nombre: String, serial: String) {
-        viewModelScope.launch {
-            try {
-                // repository.postEquipo(EquipoDto(nombre, serial))
-                // Aquí manejarías el éxito, por ejemplo, mostrando un Toast o navegando atrás
-            } catch (e: Exception) {
-                // Manejo de error
-            }
-        }
-    }
-
-    fun marcarComoDevuelto(prestamoId: Long) {
-        _actionState.value = UiState.Loading
-        viewModelScope.launch {
-            try {
-                // prestamoRepository.marcarDevuelto(prestamoId)
-                _actionState.value = UiState.Success(Unit)
-                load() // Recarga la lista para reflejar el cambio
-            } catch (e: Exception) {
-                _actionState.value = UiState.Error(e.toUserMessage())
-            }
-        }
-    }
-
     fun registrarIncidencia(prestamoId: Long, tipo: TipoIncidencia, descripcion: String?) {
         _actionState.value = UiState.Loading
         viewModelScope.launch {

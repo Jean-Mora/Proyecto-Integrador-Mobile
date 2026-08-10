@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:textColor="@color/outline"
+            android:textColor="@color/text_secondary"
             android:textSize="@dimen/text_body"
             app:layout_constraintTop_toBottomOf="@id/text_equipo"
             tools:text="Solicitante: jperez" />
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textColor="@color/outline"
+            android:textColor="@color/text_secondary"
             android:textSize="@dimen/text_body"
             app:layout_constraintTop_toBottomOf="@id/text_solicitante"
             tools:text="Solicitado: 28/07/2026 10:00" />

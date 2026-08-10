@@ -93,7 +93,11 @@ class CatalogoFragment : Fragment() {
     }
 
     private fun buildChips(categorias: List<CategoriaEquipoResponse>) {
-        if (binding.chipGroupCategorias.childCount > 0) return
+        // categorias.value arranca en emptyList() y el observer dispara con ese valor inicial
+        // antes de que termine la carga real; sin el chequeo de isEmpty() esa primera pasada
+        // (que solo agrega el chip "Todas") bloquearia para siempre la reconstruccion con las
+        // categorias reales por el guard de childCount.
+        if (categorias.isEmpty() || binding.chipGroupCategorias.childCount > 0) return
         val chipTodas = Chip(requireContext()).apply {
             text = getString(R.string.catalogo_filtro_todas)
             isCheckable = true

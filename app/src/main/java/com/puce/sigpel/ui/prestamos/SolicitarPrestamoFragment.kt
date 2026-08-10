@@ -17,9 +17,7 @@ import com.puce.sigpel.ui.common.simpleViewModelFactory
 import com.puce.sigpel.util.DateFormat
 import com.puce.sigpel.util.UiState
 
-/** Pantalla 3.4 del md: solo ESTUDIANTE (protegido por rol en DetalleEquipoFragment).
- * "Mis prestamos" (ver el listado propio) no es parte de HU-20, asi que al confirmar
- * se muestra el mensaje de exito y se vuelve al catalogo. */
+/** Pantalla 3.4 del md: solo ESTUDIANTE (protegido por rol en DetalleEquipoFragment). */
 class SolicitarPrestamoFragment : Fragment() {
 
     private var _binding: FragmentSolicitarPrestamoBinding? = null
@@ -66,7 +64,7 @@ class SolicitarPrestamoFragment : Fragment() {
                     binding.textFeedback.setTextColor(ContextCompat.getColor(requireContext(), R.color.estado_disponible))
                     binding.textFeedback.setVisible(true)
                     binding.root.postDelayed({
-                        findNavController().popBackStack(R.id.catalogoFragment, false)
+                        findNavController().navigate(R.id.action_solicitarPrestamo_to_misPrestamos)
                     }, 1200)
                 }
                 is UiState.Error -> {

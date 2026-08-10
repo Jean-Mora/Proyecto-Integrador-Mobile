@@ -8,6 +8,10 @@ import com.puce.sigpel.data.remote.dto.TipoIncidencia
 /** Pantalla 3.9 (rol ENCARGADO). */
 class IncidenciaRepository(private val apiService: ApiService) {
 
+    suspend fun listar(): Result<List<IncidenciaResponse>> = runCatching {
+        apiService.listarIncidencias()
+    }
+
     suspend fun registrar(prestamoId: Long, tipo: TipoIncidencia, descripcion: String?): Result<IncidenciaResponse> = runCatching {
         apiService.registrarIncidencia(IncidenciaRequest(prestamoId, tipo, descripcion))
     }

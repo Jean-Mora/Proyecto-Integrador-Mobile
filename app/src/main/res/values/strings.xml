@@ -65,9 +65,10 @@
     <string name="gestion_equipos_title">Gestión de equipos</string>
     <string name="gestion_equipos_empty">No hay equipos registrados</string>
     <string name="gestion_equipos_nuevo">Nuevo equipo</string>
-    <string name="gestion_equipos_editar">Editar equipo</string>
+    <string name="gestion_equipos_editar">Cambiar estado</string>
     <string name="gestion_equipos_categorias">Categorías</string>
-    <string name="gestion_equipos_eliminar_confirmar">¿Eliminar este equipo?</string>
+    <string name="gestion_equipos_eliminar_confirmar">¿Eliminar este equipo? Esta acción no se puede deshacer.</string>
+    <string name="gestion_equipos_categoria_serial">%1$s · N/S %2$s</string>
 
     <!-- Gestion categorias (encargado) -->
     <string name="gestion_categorias_title">Categorías de equipos</string>
@@ -78,12 +79,19 @@
 
     <!-- Formularios equipo/categoria -->
     <string name="form_nombre_hint">Nombre</string>
-    <string name="form_descripcion_hint">Descripción</string>
+    <string name="form_descripcion_hint">Descripción (opcional)</string>
     <string name="form_categoria_hint">Categoría</string>
     <string name="form_estado_hint">Estado</string>
+    <string name="form_serial_hint">Número de serie</string>
     <string name="form_guardar">Guardar</string>
     <string name="form_cancelar">Cancelar</string>
     <string name="form_error_nombre_requerido">El nombre es obligatorio</string>
+
+    <!-- Registrar equipo (encargado, HU-31) -->
+    <string name="registrar_equipo_title">Registrar equipo</string>
+    <string name="registrar_equipo_exito">Equipo registrado correctamente</string>
+    <string name="registrar_equipo_error">No se pudo registrar el equipo</string>
+    <string name="registrar_equipo_seleccionar_imagen">Agregar imagen (opcional)</string>
 
     <!-- Solicitudes pendientes (encargado) -->
     <string name="solicitudes_title">Solicitudes de préstamo</string>
@@ -103,6 +111,14 @@
     <string name="incidencia_registrar">Registrar incidencia</string>
     <string name="incidencia_exito">Incidencia registrada</string>
     <string name="incidencia_error">No se pudo registrar la incidencia</string>
+
+    <!-- Gestion incidencias (encargado) -->
+    <string name="gestion_incidencias_title">Incidencias registradas</string>
+    <string name="gestion_incidencias_empty">No hay incidencias registradas</string>
+    <string name="gestion_incidencias_eliminar_confirmar">¿Eliminar esta incidencia? Esta acción no se puede deshacer.</string>
+    <string name="gestion_incidencias_prestamo">Préstamo #%1$d</string>
+    <string name="gestion_incidencias_fecha">Reportado: %1$s</string>
+    <string name="gestion_incidencias_sin_descripcion">Sin descripción</string>
 
     <!-- Estados -->
     <string name="estado_disponible">Disponible</string>

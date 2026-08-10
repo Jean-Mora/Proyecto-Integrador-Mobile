@@ -34,7 +34,9 @@ class MainActivity : AppCompatActivity() {
 
     private val topLevelDestinations = setOf(
         R.id.catalogoFragment,
-        R.id.solicitudesPendientesFragment
+        R.id.misPrestamosFragment,
+        R.id.solicitudesPendientesFragment,
+        R.id.gestionEquiposFragment
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,7 +116,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun refreshRoleUi() {
         val role = app.authRepository.currentRole
+        navBarView.menu.findItem(R.id.misPrestamosFragment)?.isVisible = role == Role.ESTUDIANTE
         navBarView.menu.findItem(R.id.solicitudesPendientesFragment)?.isVisible = role == Role.ENCARGADO
+        navBarView.menu.findItem(R.id.gestionEquiposFragment)?.isVisible = role == Role.ENCARGADO
 
         invalidateOptionsMenu()
     }

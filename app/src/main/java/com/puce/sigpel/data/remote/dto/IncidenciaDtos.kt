@@ -1,18 +1,24 @@
 package com.puce.sigpel.data.remote.dto
 
-/** Espejo de com.puce.sigpel.dto.IncidenciaDtos en el backend. */
-enum class TipoIncidencia { DANIO, PERDIDA, RETRASO }
+import com.google.gson.annotations.SerializedName
+
+/** Espejo de com.puce.sigpel.dto.IncidentDtos en el backend (@RequestMapping("/incidents")). */
+enum class TipoIncidencia {
+    @SerializedName("DAMAGE") DANIO,
+    @SerializedName("LOSS") PERDIDA,
+    @SerializedName("DELAY") RETRASO
+}
 
 data class IncidenciaRequest(
-    val prestamoId: Long,
-    val tipo: TipoIncidencia,
-    val descripcion: String? = null
+    @SerializedName("loanId") val prestamoId: Long,
+    @SerializedName("type") val tipo: TipoIncidencia,
+    @SerializedName("description") val descripcion: String? = null
 )
 
 data class IncidenciaResponse(
     val id: Long,
-    val prestamoId: Long,
-    val tipo: TipoIncidencia,
-    val descripcion: String?,
-    val fechaReporte: String
+    @SerializedName("loanId") val prestamoId: Long,
+    @SerializedName("type") val tipo: TipoIncidencia,
+    @SerializedName("description") val descripcion: String?,
+    @SerializedName("reportDate") val fechaReporte: String
 )

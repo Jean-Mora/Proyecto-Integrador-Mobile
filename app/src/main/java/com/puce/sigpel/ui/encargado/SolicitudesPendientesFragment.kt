@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.puce.sigpel.R
 import com.puce.sigpel.data.remote.dto.EstadoPrestamo
@@ -58,6 +59,9 @@ class SolicitudesPendientesFragment : Fragment() {
 
         binding.swipeRefresh.applyBrandColors()
         binding.swipeRefresh.setOnRefreshListener { viewModel.load() }
+        binding.buttonIncidencias.setOnClickListener {
+            findNavController().navigate(R.id.gestionIncidenciasFragment)
+        }
 
         viewModel.state.observe(viewLifecycleOwner) { state ->
             binding.swipeRefresh.isRefreshing = false

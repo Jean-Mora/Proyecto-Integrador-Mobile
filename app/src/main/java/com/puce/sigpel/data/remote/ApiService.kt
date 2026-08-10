@@ -11,78 +11,89 @@ import com.puce.sigpel.data.remote.dto.IncidenciaResponse
 import com.puce.sigpel.data.remote.dto.PrestamoEstadoRequest
 import com.puce.sigpel.data.remote.dto.PrestamoRequest
 import com.puce.sigpel.data.remote.dto.PrestamoResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-/** Refleja 1:1 los controllers del backend (ver Backend/.../controllers). */
+/**
+ * Refleja 1:1 los controllers del backend (ver Backend/.../controllers). El backend usa
+ * rutas y nombres de parametros en ingles (EquipmentController, EquipmentCategoryController,
+ * LoanController, IncidentController); los nombres de las funciones/DTOs en Kotlin se dejan
+ * en espanol (usados en toda la UI) y el mapeo del wire se hace aqui + en los DTOs.
+ */
 interface ApiService {
 
-    // --- Equipos: GET publico, resto requiere rol ENCARGADO ---
-    @GET("equipos")
-    suspend fun listarEquipos(@Query("estado") estado: EstadoEquipo? = null): List<EquipoResponse>
+    // --- Equipment (/equipment): GET publico, resto requiere rol ENCARGADO ---
+    @GET("equipment")
+    suspend fun listarEquipos(@Query("status") estado: EstadoEquipo? = null): List<EquipoResponse>
 
-    @GET("equipos/{id}")
+    @GET("equipment/{id}")
     suspend fun obtenerEquipo(@Path("id") id: Long): EquipoResponse
 
-    @POST("equipos")
+    @POST("equipment")
     suspend fun crearEquipo(@Body request: EquipoRequest): EquipoResponse
 
-    @PATCH("equipos/{id}")
+    @PATCH("equipment/{id}")
     suspend fun actualizarEstadoEquipo(@Path("id") id: Long, @Body request: EquipoEstadoRequest): EquipoResponse
 
-    @DELETE("equipos/{id}")
+    @DELETE("equipment/{id}")
     suspend fun eliminarEquipo(@Path("id") id: Long): Response<Unit>
 
-    // --- Categorias: GET publico, resto requiere rol ENCARGADO ---
-    @GET("categorias")
+    @Multipart
+    @POST("equipment/{id}/image")
+    suspend fun subirImagenEquipo(@Path("id") id: Long, @Part file: MultipartBody.Part): EquipoResponse
+
+    // --- Categories (/categories): GET publico, resto requiere rol ENCARGADO ---
+    @GET("categories")
     suspend fun listarCategorias(): List<CategoriaEquipoResponse>
 
-    @POST("categorias")
+    @POST("categories")
     suspend fun crearCategoria(@Body request: CategoriaEquipoRequest): CategoriaEquipoResponse
 
-    @PATCH("categorias/{id}")
+    @PATCH("categories/{id}")
     suspend fun editarCategoria(@Path("id") id: Long, @Body request: CategoriaEquipoRequest): CategoriaEquipoResponse
 
-    @DELETE("categorias/{id}")
+    @DELETE("categories/{id}")
     suspend fun eliminarCategoria(@Path("id") id: Long): Response<Unit>
 
-    // --- Prestamos ---
-    @POST("prestamos")
+    // --- Loans (/loans) ---
+    @POST("loans")
     suspend fun solicitarPrestamo(@Body request: PrestamoRequest): PrestamoResponse
 
-    @GET("prestamos/me")
+    @GET("loans/me")
     suspend fun misPrestamos(): List<PrestamoResponse>
 
-    /**
-     * Bandeja de solicitudes para ENCARGADO. Endpoint marcado como pendiente en
-     * docs/sigpel_pantallas_moviles.md (hoy solo existe /prestamos/me); se deja
-     * declarado para cuando el backend lo exponga.
-     */
-    @GET("prestamos")
+    /** Bandeja completa para ENCARGADO (LoanController.listAll, @PreAuthorize ENCARGADO). */
+    @GET("loans")
     suspend fun listarPrestamos(): List<PrestamoResponse>
 
-    @PATCH("prestamos/{id}")
+    @PATCH("loans/{id}")
     suspend fun cambiarEstadoPrestamo(@Path("id") id: Long, @Body request: PrestamoEstadoRequest): PrestamoResponse
 
-    @DELETE("prestamos/{id}")
+    @DELETE("loans/{id}")
     suspend fun cancelarPrestamo(@Path("id") id: Long): Response<Unit>
 
-    // --- Incidencias: todo requiere rol ENCARGADO ---
-    @POST("incidencias")
+    // --- Incidents (/incidents): todo requiere rol ENCARGADO ---
+    @GET("incidents")
+    suspend fun listarIncidencias(): List<IncidenciaResponse>
+
+    @POST("incidents")
     suspend fun registrarIncidencia(@Body request: IncidenciaRequest): IncidenciaResponse
 
-    @GET("incidencias/{id}")
+    @GET("incidents/{id}")
     suspend fun obtenerIncidencia(@Path("id") id: Long): IncidenciaResponse
 
-    @PATCH("incidencias/{id}")
+    @PATCH("incidents/{id}")
     suspend fun actualizarIncidencia(@Path("id") id: Long, @Body request: IncidenciaRequest): IncidenciaResponse
 
-    @DELETE("incidencias/{id}")
+    @DELETE("incidents/{id}")
     suspend fun eliminarIncidencia(@Path("id") id: Long): Response<Unit>
 }

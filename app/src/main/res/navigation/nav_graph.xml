@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- HU-21: se agrega el panel de aprobaciones del ENCARGADO (solicitudesPendientesFragment). -->
+<!-- HU-29/30/31: Mis prestamos, Detalle de prestamo (cancelar) y Registrar equipo. -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -61,6 +61,35 @@
         tools:layout="@layout/fragment_solicitar_prestamo">
         <argument android:name="equipoId" app:argType="long" />
         <argument android:name="equipoNombre" app:argType="string" />
+        <action
+            android:id="@+id/action_solicitarPrestamo_to_misPrestamos"
+            app:destination="@id/misPrestamosFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popUpTo="@id/catalogoFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/misPrestamosFragment"
+        android:name="com.puce.sigpel.ui.prestamos.MisPrestamosFragment"
+        android:label="@string/mis_prestamos_title"
+        tools:layout="@layout/fragment_mis_prestamos">
+        <action
+            android:id="@+id/action_misPrestamos_to_detallePrestamo"
+            app:destination="@id/detallePrestamoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detallePrestamoFragment"
+        android:name="com.puce.sigpel.ui.prestamos.DetallePrestamoFragment"
+        android:label="@string/detalle_prestamo_title"
+        tools:layout="@layout/fragment_detalle_prestamo">
+        <argument android:name="prestamoId" app:argType="long" />
     </fragment>
 
     <fragment
@@ -68,5 +97,29 @@
         android:name="com.puce.sigpel.ui.encargado.SolicitudesPendientesFragment"
         android:label="@string/solicitudes_title"
         tools:layout="@layout/fragment_solicitudes_pendientes" />
+
+    <fragment
+        android:id="@+id/registrarEquipoFragment"
+        android:name="com.puce.sigpel.ui.encargado.RegistrarEquipoFragment"
+        android:label="@string/registrar_equipo_title"
+        tools:layout="@layout/fragment_registrar_equipo" />
+
+    <fragment
+        android:id="@+id/gestionCategoriasFragment"
+        android:name="com.puce.sigpel.ui.encargado.GestionCategoriasFragment"
+        android:label="@string/gestion_categorias_title"
+        tools:layout="@layout/fragment_gestion_categorias" />
+
+    <fragment
+        android:id="@+id/gestionEquiposFragment"
+        android:name="com.puce.sigpel.ui.encargado.GestionEquiposFragment"
+        android:label="@string/gestion_equipos_title"
+        tools:layout="@layout/fragment_gestion_equipos" />
+
+    <fragment
+        android:id="@+id/gestionIncidenciasFragment"
+        android:name="com.puce.sigpel.ui.encargado.GestionIncidenciasFragment"
+        android:label="@string/gestion_incidencias_title"
+        tools:layout="@layout/fragment_gestion_incidencias" />
 
 </navigation>

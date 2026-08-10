@@ -4,47 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.puce.sigpel.ui.catalogo.CatalogoFragment">
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layout_search"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/screen_margin"
-        android:hint="@string/catalogo_search_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_max="@dimen/content_max_width"
-        app:startIconDrawable="@drawable/ic_search">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <HorizontalScrollView
-        android:id="@+id/scroll_chips"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/screen_margin"
-        android:scrollbars="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_search"
-        app:layout_constraintWidth_max="@dimen/content_max_width">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group_categorias"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:singleLine="true"
-            app:singleSelection="true" />
-    </HorizontalScrollView>
+    tools:context="com.puce.sigpel.ui.encargado.GestionEquiposFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
@@ -53,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scroll_chips">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_equipos"
@@ -61,28 +21,29 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:layoutAnimation="@anim/layout_animation_fall_down"
-            android:padding="@dimen/card_spacing"
-            tools:listitem="@layout/item_equipo" />
+            android:paddingVertical="@dimen/card_spacing"
+            tools:listitem="@layout/item_equipo_admin" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout
         android:id="@+id/layout_empty"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/screen_margin"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scroll_chips">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:alpha="0.5"
             android:contentDescription="@null"
-            android:src="@drawable/ic_search"
+            android:src="@drawable/ic_equipos"
             app:tint="@color/outline" />
 
         <TextView
@@ -91,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_spacing"
             android:gravity="center"
-            android:text="@string/catalogo_empty"
+            android:text="@string/gestion_equipos_empty"
             android:textColor="@color/text_secondary" />
     </LinearLayout>
 
@@ -103,6 +64,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/scroll_chips" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="@string/gestion_equipos_nuevo"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.puce.sigpel.ui.encargado.SolicitudesPendientesFragment">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_incidencias"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/nav_incidencias"
+        app:icon="@drawable/ic_incidencia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
         android:layout_width="0dp"
@@ -13,7 +24,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/button_incidencias">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_solicitudes"
@@ -53,7 +64,7 @@
             android:layout_marginTop="@dimen/card_spacing"
             android:gravity="center"
             android:text="@string/solicitudes_empty"
-            android:textColor="@color/outline" />
+            android:textColor="@color/text_secondary" />
     </LinearLayout>
 
     <ProgressBar

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.puce.sigpel.ui.prestamos.MisPrestamosFragment">
+    tools:context="com.puce.sigpel.ui.encargado.GestionCategoriasFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh"
@@ -16,13 +16,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_prestamos"
+            android:id="@+id/recycler_categorias"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:layoutAnimation="@anim/layout_animation_fall_down"
             android:paddingVertical="@dimen/card_spacing"
-            tools:listitem="@layout/item_prestamo" />
+            tools:listitem="@layout/item_categoria" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout
@@ -43,7 +43,7 @@
             android:layout_height="64dp"
             android:alpha="0.5"
             android:contentDescription="@null"
-            android:src="@drawable/ic_prestamos"
+            android:src="@drawable/ic_catalogo"
             app:tint="@color/outline" />
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_spacing"
             android:gravity="center"
-            android:text="@string/mis_prestamos_empty"
+            android:text="@string/gestion_categorias_empty"
             android:textColor="@color/text_secondary" />
     </LinearLayout>
 
@@ -65,5 +65,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:contentDescription="@string/gestion_categorias_nueva"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

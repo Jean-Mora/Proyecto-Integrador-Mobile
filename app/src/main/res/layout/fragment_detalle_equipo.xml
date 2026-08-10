@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:gravity="center"
-                android:textColor="@color/outline"
+                android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_body"
                 app:layout_constraintTop_toBottomOf="@id/text_nombre"
                 tools:text="Categoría: Audiovisuales" />
@@ -95,7 +95,7 @@
                 android:layout_marginTop="@dimen/section_spacing"
                 android:gravity="center"
                 android:text="@string/detalle_equipo_login_requerido"
-                android:textColor="@color/outline"
+                android:textColor="@color/text_secondary"
                 android:textSize="@dimen/text_body"
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@id/text_descripcion" />

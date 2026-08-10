@@ -4,30 +4,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.puce.sigpel.data.remote.dto.PrestamoResponse
+import com.puce.sigpel.data.repository.PrestamoRepository
+import com.puce.sigpel.util.UiState
+import com.puce.sigpel.util.toUserMessage
 import kotlinx.coroutines.launch
 
-// Importa aquí tu modelo/DTO de préstamo según tu proyecto
-// import com.puce.sigpel.data.remote.PrestamoDto
+/** Pantalla 3.5 del md (HU-29): lista de prestamos del ESTUDIANTE via GET /loans/me. */
+class MisPrestamosViewModel(private val prestamoRepository: PrestamoRepository) : ViewModel() {
 
-class MisPrestamosViewModel : ViewModel() {
+    private val _state = MutableLiveData<UiState<List<PrestamoResponse>>>()
+    val state: LiveData<UiState<List<PrestamoResponse>>> = _state
 
-    // private val repository = PrestamoRepository() // Ajusta según tu arquitectura de red
-
-    private val _prestamos = MutableLiveData<List<Any>>() // Cambia 'Any' por tu DTO de Préstamo
-    val prestamos: LiveData<List<Any>> get() = _prestamos
-
-    fun cargarMisPrestamos() {
-        // Aquí se realizará la llamada a Retrofit para consumir GET /prestamos/me
-    }
-
-    fun cancelarPrestamo(prestamoId: String) {
+    fun load() {
+        _state.value = UiState.Loading
         viewModelScope.launch {
-            try {
-                // Aquí agregarás la llamada a tu repositorio para el DELETE /prestamos/{id}
-            } catch (e: Exception) {
-                // Manejo de errores
-            }
+            prestamoRepository.misPrestamos()
+                .onSuccess { lista -> _state.value = UiState.Success(lista.sortedByDescending { it.fechaSolicitud }) }
+                .onFailure { _state.value = UiState.Error(it.toUserMessage()) }
         }
     }
-
 }

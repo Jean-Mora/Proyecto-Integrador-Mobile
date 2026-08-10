@@ -5,7 +5,15 @@
         android:icon="@drawable/ic_catalogo"
         android:title="@string/nav_catalogo" />
     <item
+        android:id="@+id/misPrestamosFragment"
+        android:icon="@drawable/ic_prestamos"
+        android:title="@string/nav_mis_prestamos" />
+    <item
         android:id="@+id/solicitudesPendientesFragment"
         android:icon="@drawable/ic_solicitudes"
         android:title="@string/nav_solicitudes" />
+    <item
+        android:id="@+id/gestionEquiposFragment"
+        android:icon="@drawable/ic_equipos"
+        android:title="@string/nav_gestion_equipos" />
 </menu>
