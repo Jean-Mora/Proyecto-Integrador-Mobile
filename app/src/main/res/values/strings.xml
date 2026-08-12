@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SIGPEL</string>
+
+    <!-- Navegacion -->
+    <string name="nav_catalogo">Catálogo</string>
+    <string name="nav_mis_prestamos">Mis préstamos</string>
+    <string name="nav_gestion_equipos">Equipos</string>
+    <string name="nav_solicitudes">Solicitudes</string>
+    <string name="nav_incidencias">Incidencias</string>
+    <string name="action_login">Iniciar sesión</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_logout_confirm_msg">¿Seguro que quieres cerrar sesión?</string>
+
+    <!-- Login -->
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_subtitle">Ingresa con tu cuenta institucional PUCE</string>
+    <string name="login_username_hint">Usuario</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="login_visitante">Continuar como visitante</string>
+    <string name="login_error_empty">Completa usuario y contraseña</string>
+    <string name="login_error_generic">No se pudo iniciar sesión. Verifica tus credenciales.</string>
+
+    <!-- Catalogo -->
+    <string name="catalogo_title">Catálogo de equipos</string>
+    <string name="catalogo_search_hint">Buscar equipo…</string>
+    <string name="catalogo_filtro_todas">Todas</string>
+    <string name="catalogo_empty">No se encontraron equipos con esos filtros</string>
+    <string name="catalogo_error">No se pudo cargar el catálogo</string>
+
+    <!-- Detalle equipo -->
+    <string name="detalle_equipo_categoria">Categoría: %1$s</string>
+    <string name="detalle_equipo_estado">Estado: %1$s</string>
+    <string name="detalle_equipo_solicitar">Solicitar préstamo</string>
+    <string name="detalle_equipo_login_requerido">Inicia sesión como estudiante para solicitar este equipo</string>
+
+    <!-- Solicitar prestamo -->
+    <string name="solicitar_prestamo_title">Solicitar préstamo</string>
+    <string name="solicitar_prestamo_equipo">Equipo</string>
+    <string name="solicitar_prestamo_fecha">Fecha de devolución estimada</string>
+    <string name="solicitar_prestamo_fecha_hint">Selecciona una fecha (opcional)</string>
+    <string name="solicitar_prestamo_confirmar">Confirmar solicitud</string>
+    <string name="solicitar_prestamo_exito">Solicitud enviada, queda pendiente de aprobación</string>
+    <string name="solicitar_prestamo_error">No se pudo enviar la solicitud</string>
+
+    <!-- Mis prestamos -->
+    <string name="mis_prestamos_title">Mis préstamos</string>
+    <string name="mis_prestamos_empty">Todavía no tienes préstamos registrados</string>
+    <string name="mis_prestamos_error">No se pudieron cargar tus préstamos</string>
+
+    <!-- Detalle prestamo -->
+    <string name="detalle_prestamo_title">Detalle del préstamo</string>
+    <string name="detalle_prestamo_equipo">Equipo: %1$s</string>
+    <string name="detalle_prestamo_fecha_solicitud">Solicitado: %1$s</string>
+    <string name="detalle_prestamo_fecha_devolucion_estimada">Devolución estimada: %1$s</string>
+    <string name="detalle_prestamo_fecha_devolucion_real">Devuelto: %1$s</string>
+    <string name="detalle_prestamo_comentario">Comentario: %1$s</string>
+    <string name="detalle_prestamo_cancelar">Cancelar solicitud</string>
+    <string name="detalle_prestamo_cancelar_confirmar_titulo">¿Cancelar solicitud?</string>
+    <string name="detalle_prestamo_cancelar_confirmar_msg">Esta acción no se puede deshacer.</string>
+    <string name="detalle_prestamo_cancelada">Solicitud cancelada</string>
+
+    <!-- Gestion equipos (encargado) -->
+    <string name="gestion_equipos_title">Gestión de equipos</string>
+    <string name="gestion_equipos_empty">No hay equipos registrados</string>
+    <string name="gestion_equipos_nuevo">Nuevo equipo</string>
+    <string name="gestion_equipos_editar">Cambiar estado</string>
+    <string name="gestion_equipos_categorias">Categorías</string>
+    <string name="gestion_equipos_eliminar_confirmar">¿Eliminar este equipo? Esta acción no se puede deshacer.</string>
+    <string name="gestion_equipos_categoria_serial">%1$s · N/S %2$s</string>
+
+    <!-- Gestion categorias (encargado) -->
+    <string name="gestion_categorias_title">Categorías de equipos</string>
+    <string name="gestion_categorias_empty">No hay categorías registradas</string>
+    <string name="gestion_categorias_nueva">Nueva categoría</string>
+    <string name="gestion_categorias_editar">Editar categoría</string>
+    <string name="gestion_categorias_eliminar_confirmar">¿Eliminar esta categoría?</string>
+
+    <!-- Formularios equipo/categoria -->
+    <string name="form_nombre_hint">Nombre</string>
+    <string name="form_descripcion_hint">Descripción (opcional)</string>
+    <string name="form_categoria_hint">Categoría</string>
+    <string name="form_estado_hint">Estado</string>
+    <string name="form_serial_hint">Número de serie</string>
+    <string name="form_guardar">Guardar</string>
+    <string name="form_cancelar">Cancelar</string>
+    <string name="form_error_nombre_requerido">El nombre es obligatorio</string>
+
+    <!-- Registrar equipo (encargado, HU-31) -->
+    <string name="registrar_equipo_title">Registrar equipo</string>
+    <string name="registrar_equipo_exito">Equipo registrado correctamente</string>
+    <string name="registrar_equipo_error">No se pudo registrar el equipo</string>
+    <string name="registrar_equipo_seleccionar_imagen">Agregar imagen (opcional)</string>
+
+    <!-- Solicitudes pendientes (encargado) -->
+    <string name="solicitudes_title">Solicitudes de préstamo</string>
+    <string name="solicitudes_empty">No hay solicitudes pendientes</string>
+    <string name="solicitudes_aprobar">Aprobar</string>
+    <string name="solicitudes_rechazar">Rechazar</string>
+    <string name="solicitudes_marcar_devuelto">Marcar como devuelto</string>
+    <string name="solicitudes_solicitante">Solicitante: %1$s</string>
+    <string name="solicitudes_comentario_hint">Comentario (opcional)</string>
+    <string name="solicitudes_rechazar_titulo">Rechazar solicitud</string>
+
+    <!-- Incidencias (encargado) -->
+    <string name="incidencia_title">Registrar incidencia</string>
+    <string name="incidencia_prestamo_hint">Préstamo asociado</string>
+    <string name="incidencia_tipo_hint">Tipo de incidencia</string>
+    <string name="incidencia_descripcion_hint">Descripción</string>
+    <string name="incidencia_registrar">Registrar incidencia</string>
+    <string name="incidencia_exito">Incidencia registrada</string>
+    <string name="incidencia_error">No se pudo registrar la incidencia</string>
+
+    <!-- Gestion incidencias (encargado) -->
+    <string name="gestion_incidencias_title">Incidencias registradas</string>
+    <string name="gestion_incidencias_empty">No hay incidencias registradas</string>
+    <string name="gestion_incidencias_eliminar_confirmar">¿Eliminar esta incidencia? Esta acción no se puede deshacer.</string>
+    <string name="gestion_incidencias_prestamo">Préstamo #%1$d</string>
+    <string name="gestion_incidencias_fecha">Reportado: %1$s</string>
+    <string name="gestion_incidencias_sin_descripcion">Sin descripción</string>
+
+    <!-- Estados -->
+    <string name="estado_disponible">Disponible</string>
+    <string name="estado_prestado">Prestado</string>
+    <string name="estado_mantenimiento">Mantenimiento</string>
+    <string name="estado_pendiente">Pendiente</string>
+    <string name="estado_aprobado">Aprobado</string>
+    <string name="estado_rechazado">Rechazado</string>
+    <string name="estado_devuelto">Devuelto</string>
+
+    <!-- Tipos de incidencia -->
+    <string name="tipo_danio">Daño</string>
+    <string name="tipo_perdida">Pérdida</string>
+    <string name="tipo_retraso">Retraso</string>
+
+    <!-- Comunes -->
+    <string name="accion_reintentar">Reintentar</string>
+    <string name="accion_editar">Editar</string>
+    <string name="accion_eliminar">Eliminar</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="error_sesion_expirada">Tu sesión expiró, inicia sesión de nuevo</string>
+    <string name="error_red">Revisa tu conexión e intenta de nuevo</string>
+    <string name="cd_imagen_equipo">Imagen del equipo</string>
+    <string name="cd_agregar">Agregar</string>
+</resources>

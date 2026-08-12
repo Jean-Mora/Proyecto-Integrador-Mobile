@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.puce.sigpel.ui.catalogo.DetalleEquipoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/screen_margin"
+            android:layout_marginTop="@dimen/section_spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="@dimen/content_max_width">
+
+            <ImageView
+                android:id="@+id/image_equipo"
+                android:layout_width="@dimen/detalle_image_size"
+                android:layout_height="@dimen/detalle_image_size"
+                android:background="@drawable/shape_card_placeholder"
+                android:contentDescription="@string/cd_imagen_equipo"
+                android:padding="28dp"
+                android:src="@drawable/ic_devices"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/text_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_spacing"
+                android:gravity="center"
+                android:textAppearance="@style/Widget.Sigpel.SectionTitle"
+                app:layout_constraintTop_toBottomOf="@id/image_equipo"
+                tools:text="Proyector Epson PowerLite" />
+
+            <TextView
+                android:id="@+id/text_categoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body"
+                app:layout_constraintTop_toBottomOf="@id/text_nombre"
+                tools:text="Categoría: Audiovisuales" />
+
+            <TextView
+                android:id="@+id/badge_estado"
+                style="@style/Widget.Sigpel.EstadoBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_spacing"
+                android:background="@drawable/shape_badge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_categoria"
+                tools:text="Disponible" />
+
+            <TextView
+                android:id="@+id/text_descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_spacing"
+                android:lineSpacingExtra="4dp"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="@dimen/text_body"
+                app:layout_constraintTop_toBottomOf="@id/badge_estado"
+                tools:text="Proyector full HD con conexión HDMI y control remoto incluido." />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_solicitar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_spacing"
+                android:text="@string/detalle_equipo_solicitar"
+                app:icon="@drawable/ic_prestamos"
+                app:layout_constraintTop_toBottomOf="@id/text_descripcion" />
+
+            <TextView
+                android:id="@+id/text_login_requerido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_spacing"
+                android:gravity="center"
+                android:text="@string/detalle_equipo_login_requerido"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/text_descripcion" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_error"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/screen_margin"
+            android:gravity="center"
+            android:textColor="@color/error"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="No se pudo cargar el equipo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

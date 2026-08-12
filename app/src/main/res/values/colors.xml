@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="puce_blue">#1B4B91</color>
+    <color name="puce_blue_dark">#0F2E5C</color>
+    <color name="puce_gold">#C9A227</color>
+
+    <color name="background_light">#F5F6FA</color>
+    <color name="background_dark">#121317</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_dark">#1E1F24</color>
+    <color name="on_surface_light">#1A1C1E</color>
+    <color name="on_surface_dark">#E3E2E6</color>
+    <color name="outline">#C4C6CF</color>
+    <!-- Uso exclusivo en texto (nombres secundarios, fechas, estados vacios): #C4C6CF sobre
+         fondo claro da ~1.7:1 de contraste, por debajo del minimo WCAG AA de 4.5:1 para texto.
+         Este gris da ~6:1. "outline" se deja intacto para bordes/strokes decorativos, donde
+         el requisito de contraste es mucho mas laxo (3:1 solo para limites de componentes UI). -->
+    <color name="text_secondary">#5F6368</color>
+
+    <!-- estado_prestado/estado_pendiente y estado_mantenimiento se oscurecieron frente a su
+         version original (#B26A00 -> 4.24:1, #8E8E93 -> 3.26:1) porque llevan texto blanco
+         encima (Widget.Sigpel.EstadoBadge, 12sp bold) y no llegaban al minimo WCAG AA de 4.5:1
+         para texto pequeño. -->
+    <color name="estado_disponible">#2E7D32</color>
+    <color name="estado_prestado">#A05F00</color>
+    <color name="estado_mantenimiento">#717175</color>
+
+    <color name="estado_pendiente">#A05F00</color>
+    <color name="estado_aprobado">#2E7D32</color>
+    <color name="estado_rechazado">#C62828</color>
+    <color name="estado_devuelto">#455A64</color>
+
+    <color name="error">#C62828</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="ripple_puce_blue">#331B4B91</color>
+</resources>

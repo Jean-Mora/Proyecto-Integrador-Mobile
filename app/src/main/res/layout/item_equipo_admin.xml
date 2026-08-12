@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/screen_margin"
+    android:layout_marginVertical="@dimen/card_spacing"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/outline"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text_nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/badge_estado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Proyector Epson X500" />
+
+        <TextView
+            android:id="@+id/badge_estado"
+            style="@style/Widget.Sigpel.EstadoBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Disponible" />
+
+        <TextView
+            android:id="@+id/text_categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body"
+            app:layout_constraintTop_toBottomOf="@id/text_nombre"
+            tools:text="Proyectores · N/S ABC123" />
+
+        <LinearLayout
+            android:id="@+id/actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_categoria">
+
+            <ImageButton
+                android:id="@+id/button_editar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/gestion_equipos_editar"
+                android:src="@drawable/ic_edit"
+                app:tint="?attr/colorPrimary" />
+
+            <ImageButton
+                android:id="@+id/button_eliminar"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/accion_eliminar"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/error" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tablets grandes / plegables desplegados (>=840dp): grilla mas ancha. -->
+    <integer name="grid_columns_catalogo">4</integer>
+    <integer name="grid_columns_admin">3</integer>
+</resources>

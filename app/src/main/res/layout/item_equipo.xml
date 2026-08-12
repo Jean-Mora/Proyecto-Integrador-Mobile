@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_spacing"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:rippleColor="@color/ripple_puce_blue"
+    app:strokeColor="@color/outline"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/image_equipo"
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:background="@drawable/shape_card_placeholder"
+            android:contentDescription="@string/cd_imagen_equipo"
+            android:padding="24dp"
+            android:src="@drawable/ic_devices"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/text_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold"
+            tools:text="Proyector Epson" />
+
+        <TextView
+            android:id="@+id/text_categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body"
+            tools:text="Audiovisuales" />
+
+        <TextView
+            android:id="@+id/badge_estado"
+            style="@style/Widget.Sigpel.EstadoBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/shape_badge"
+            tools:text="Disponible" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

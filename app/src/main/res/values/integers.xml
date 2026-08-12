@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Columnas de las grillas (catalogo, gestion de equipos). Telefono: 1 columna en vertical. -->
+    <integer name="grid_columns_catalogo">2</integer>
+    <integer name="grid_columns_admin">1</integer>
+</resources>

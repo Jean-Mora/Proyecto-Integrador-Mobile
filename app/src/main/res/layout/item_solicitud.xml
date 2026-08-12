@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/screen_margin"
+    android:layout_marginVertical="@dimen/card_spacing"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/outline"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/text_equipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="@dimen/text_subtitle"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/badge_estado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Proyector Epson" />
+
+        <TextView
+            android:id="@+id/badge_estado"
+            style="@style/Widget.Sigpel.EstadoBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_badge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pendiente" />
+
+        <TextView
+            android:id="@+id/text_solicitante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body"
+            app:layout_constraintTop_toBottomOf="@id/text_equipo"
+            tools:text="Solicitante: jperez" />
+
+        <TextView
+            android:id="@+id/text_fecha_solicitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_body"
+            app:layout_constraintTop_toBottomOf="@id/text_solicitante"
+            tools:text="Solicitado: 28/07/2026 10:00" />
+
+        <LinearLayout
+            android:id="@+id/actions_pendiente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/text_fecha_solicitud">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_aprobar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="@string/solicitudes_aprobar"
+                app:icon="@drawable/ic_check" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_rechazar"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/solicitudes_rechazar"
+                android:textColor="@color/error"
+                app:icon="@drawable/ic_close"
+                app:iconTint="@color/error"
+                app:strokeColor="@color/error" />
+
+
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_devuelto"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/solicitudes_marcar_devuelto"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/text_fecha_solicitud" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonIncidencia"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Registrar Incidencia"
+            android:textColor="@color/error"
+            app:strokeColor="@color/error"
+            app:iconTint="@color/error"
+            app:layout_constraintTop_toBottomOf="@id/button_devuelto" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
